@@ -9,6 +9,7 @@ import ImageViewer from './ImageViewer';
 import Animated from 'react-native-reanimated';
 import { SCREEN_WIDTH } from './constants';
 import type { GalleryProps } from './Type';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 function Gallery({
   data = [],
@@ -28,24 +29,26 @@ function Gallery({
   );
 
   return (
-    <View style={[styles.container, containerStyle]}>
-      <Animated.FlatList
-        ref={flatListRef}
-        data={data}
-        renderItem={renderItem}
-        horizontal
-        pagingEnabled
-        showsHorizontalScrollIndicator={false}
-        bounces={false}
-        getItemLayout={(_, index) => ({
-          length: SCREEN_WIDTH,
-          offset: SCREEN_WIDTH * index,
-          index,
-        })}
-        style={[styles.container, { backgroundColor: backdropColor }, style]}
-        contentContainerStyle={contentContainerStyle}
-      />
-    </View>
+    <GestureHandlerRootView>
+      <View style={[styles.container, containerStyle]}>
+        <Animated.FlatList
+          ref={flatListRef}
+          data={data}
+          renderItem={renderItem}
+          horizontal
+          pagingEnabled
+          showsHorizontalScrollIndicator={false}
+          bounces={false}
+          getItemLayout={(_, index) => ({
+            length: SCREEN_WIDTH,
+            offset: SCREEN_WIDTH * index,
+            index,
+          })}
+          style={[styles.container, { backgroundColor: backdropColor }, style]}
+          contentContainerStyle={contentContainerStyle}
+        />
+      </View>
+    </GestureHandlerRootView>
   );
 }
 
