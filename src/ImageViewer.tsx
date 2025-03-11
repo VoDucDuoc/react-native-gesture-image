@@ -88,10 +88,12 @@ const ImageViewer = ({ source, imageStyle }: ImageViewerProps) => {
 
   const pinch = Gesture.Pinch()
     .onStart((event) => {
+      'worklet';
       focalX.value = event.focalX - SCREEN_WIDTH / 2;
       focalY.value = event.focalY - SCREEN_HEIGHT / 2;
     })
     .onUpdate((event) => {
+      'worklet';
       const dampening = 0.1;
       const scaleFactor = 1 + (event.scale - 1) * dampening;
       const newScale = scale.value * scaleFactor;
@@ -105,6 +107,7 @@ const ImageViewer = ({ source, imageStyle }: ImageViewerProps) => {
       }
     })
     .onEnd(() => {
+      'worklet';
       if (scale.value <= 1) {
         scale.value = withTiming(1, { duration: 300 });
         translateX.value = withTiming(0, { duration: 300 });
@@ -119,10 +122,12 @@ const ImageViewer = ({ source, imageStyle }: ImageViewerProps) => {
 
   const pan = Gesture.Pan()
     .onStart(() => {
+      'worklet';
       lastTranslateX.value = translateX.value;
       lastTranslateY.value = translateY.value;
     })
     .onUpdate((event) => {
+      'worklet';
       if (scale.value > 1) {
         const scaledWidth = imageWidth.value * scale.value;
         const scaledHeight = imageHeight.value * scale.value;
@@ -154,6 +159,7 @@ const ImageViewer = ({ source, imageStyle }: ImageViewerProps) => {
       }
     })
     .onEnd(() => {
+      'worklet';
       snapToEdges();
     })
     .enabled(activePan);
@@ -161,6 +167,7 @@ const ImageViewer = ({ source, imageStyle }: ImageViewerProps) => {
   const doubleTap = Gesture.Tap()
     .numberOfTaps(2)
     .onStart((event) => {
+      'worklet';
       if (scale.value > 1) {
         scale.value = withTiming(1);
         translateX.value = withTiming(0);
