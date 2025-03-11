@@ -1,5 +1,9 @@
 # Changelog
 
+## <small>0.3.1 (2025-03-11)</small>
+
+* chore: remove deprecated type definitions file ([8229155](https://github.com/VoDucDuoc/react-native-gesture-image/commit/8229155))
+
 ## 0.3.0 (2025-03-11)
 
 * feat: improve TypeScript configuration and add type definitions ([5c048ae](https://github.com/VoDucDuoc/react-native-gesture-image/commit/5c048ae))
