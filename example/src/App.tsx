@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import Gallery from 'react-native-gesture-image';
+import Gallery from '@duocvo/react-native-gesture-image';
 
 const image1 = require('../assets/image1.jpeg');
 const image2 = require('../assets/image2.jpeg');
