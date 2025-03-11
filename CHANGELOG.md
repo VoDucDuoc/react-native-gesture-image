@@ -1,5 +1,9 @@
 # Changelog
 
+## <small>0.4.1 (2025-03-11)</small>
+
+* chore: upgrade react-native-gesture-handler and react-native-reanimated dependencies ([b0d6b16](https://github.com/VoDucDuoc/react-native-gesture-image/commit/b0d6b16))
+
 ## 0.4.0 (2025-03-11)
 
 * chore: remove exports configuration from package.json ([436782f](https://github.com/VoDucDuoc/react-native-gesture-image/commit/436782f))
