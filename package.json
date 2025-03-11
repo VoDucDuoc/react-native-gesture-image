@@ -1,7 +1,7 @@
 {
   "name": "react-native-gesture-image",
   "version": "0.1.0",
-  "description": "This library provides a highly customizable and performant image viewer component for React Native applications. It supports advanced gestures such as pinch-to-zoom, panning, and double-tap to zoom in and out, making it ideal for creating rich, interactive image viewing experiences.",
+  "description": "This library provides a highly customizable and performant image viewer component for React Native applications. Itsupport advanced gestures such as pinch-to-zoom, panning, and double-tap to zoom in and out, making it ideal for creating rich, interactive image viewing experiences.",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
   "module": "./lib/module/index.js",
@@ -48,18 +48,32 @@
   "keywords": [
     "react-native",
     "ios",
-    "android"
+    "android",
+    "image",
+    "viewer",
+    "gesture",
+    "zoom",
+    "pan",
+    "double-tap",
+    "pinch-to-zoom",
+    "image-viewer",
+    "react-native-image-viewer",
+    "react-native-image-zoom",
+    "react-native-image-pan-zoom",
+    "react-native-image-gesture",
+    "react-native-image-gesture-viewer",
+    "gesture-image"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/VoDucDuoc/react-native-gesture-image.git.git"
+    "url": "git+https://github.com/VoDucDuoc/react-native-gesture-image.git"
   },
-  "author": "duocvo <duocvo2501@gmail.com> (https://github.com/VoDucDuoc)",
+  "author": "Duoc Vo <duocvo2501@gmail.com> (https://github.com/VoDucDuoc)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/VoDucDuoc/react-native-gesture-image.git/issues"
+    "url": "https://github.com/VoDucDuoc/react-native-gesture-image/issues"
   },
-  "homepage": "https://github.com/VoDucDuoc/react-native-gesture-image.git#readme",
+  "homepage": "https://github.com/VoDucDuoc/react-native-gesture-image#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
@@ -80,6 +94,8 @@
     "react": "18.3.1",
     "react-native": "0.76.7",
     "react-native-builder-bob": "^0.37.0",
+    "react-native-gesture-handler": "~2.20.2",
+    "react-native-reanimated": "~3.16.1",
     "release-it": "^17.10.0",
     "typescript": "^5.2.2"
   },
@@ -113,9 +129,6 @@
     },
     "npm": {
       "publish": true
-    },
-    "github": {
-      "release": true
     },
     "plugins": {
       "@release-it/conventional-changelog": {

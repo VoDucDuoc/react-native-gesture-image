@@ -1,3 +1,4 @@
-export function multiply(a: number, b: number): number {
-  return a * b;
-}
+import Gallery from './Gallery';
+export { default as ImageViewer } from './ImageViewer';
+
+export default Gallery;
