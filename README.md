@@ -4,7 +4,7 @@ This library provides a highly customizable and performant image viewer componen
 
 IOS|ANDROID
 --|--
-<video src="https://github.com/user-attachments/assets/d4ed6e2d-129d-475e-ad4f-bfbd9f916cda">|<video src="https://github.com/user-attachments/assets/a2b18502-bd07-4c39-8f40-b0001ea0ec60">
+<video src="https://github.com/user-attachments/assets/6cdb7f6e-a059-4ed1-ac75-3f0a74c75052">|<video src="https://github.com/user-attachments/assets/9fe9313f-2ed2-4aef-8c4d-408a812a6a9f">
 
 ## Prerequisites
 
