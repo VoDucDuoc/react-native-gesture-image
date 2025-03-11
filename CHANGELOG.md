@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.0 (2025-03-11)
+
+* feat: improve TypeScript configuration and add type definitions ([5c048ae](https://github.com/VoDucDuoc/react-native-gesture-image/commit/5c048ae))
+
 ## 0.2.0 (2025-03-11)
 
 * chore: initial commit ([b481dbc](https://github.com/VoDucDuoc/react-native-gesture-image/commit/b481dbc))
