@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.4.0 (2025-03-11)
+
+* chore: remove exports configuration from package.json ([436782f](https://github.com/VoDucDuoc/react-native-gesture-image/commit/436782f))
+* feat: wrap Gallery component with GestureHandlerRootView for gesture handling ([dc967b2](https://github.com/VoDucDuoc/react-native-gesture-image/commit/dc967b2))
+
 ## <small>0.3.1 (2025-03-11)</small>
 
 * chore: remove deprecated type definitions file ([8229155](https://github.com/VoDucDuoc/react-native-gesture-image/commit/8229155))
