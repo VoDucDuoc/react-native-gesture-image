@@ -5,6 +5,7 @@
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
   "module": "./lib/module/index.js",
+  "types": "./lib/typescript/src/index.d.ts",
   "exports": {
     ".": {
       "import": {
@@ -187,25 +188,12 @@
     "source": "src",
     "output": "lib",
     "targets": [
-      [
-        "commonjs",
-        {
-          "esm": true
-        }
-      ],
-      [
-        "module",
-        {
-          "esm": true
-        }
-      ],
-      [
-        "typescript",
-        {
-          "project": "tsconfig.build.json",
-          "esm": true
-        }
-      ]
+      ["commonjs", {"configFile": "./babel.config.js"}],
+      ["module", {"configFile": "./babel.config.js"}],
+      ["typescript", {
+        "project": "tsconfig.build.json",
+        "tsc": "./node_modules/.bin/tsc"
+      }]
     ]
   },
   "create-react-native-library": {
