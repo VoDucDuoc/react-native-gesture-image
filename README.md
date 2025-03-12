@@ -25,13 +25,24 @@ yarn add @duocvo/react-native-gesture-image
 import Gallery from '@duocvo/react-native-gesture-image';
 
 // Example usage of Gallery
-const images = [
-  { uri: 'https://example.com/image1.jpg' },
-  { uri: 'https://example.com/image2.jpg' },
-  { uri: 'https://example.com/image3.jpg' },
-];
+export default function App() {
+  const images = [
+    { uri: 'https://picsum.photos/200/300' },
+    { uri: 'https://picsum.photos/200/300' },
+    { uri: 'https://picsum.photos/200/300' },
+  ]
+  return (
+    <View style={styles.container}>
+      <Gallery data={images} />
+    </View>
+  );
+}
 
-<Gallery data={images} />
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
 ```
 
 ## Props
