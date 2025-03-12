@@ -1,5 +1,9 @@
 # Changelog
 
+## <small>0.4.2 (2025-03-12)</small>
+
+* chore: downgrade react-native-gesture-handler and react-native-reanimated ([68e6e43](https://github.com/VoDucDuoc/react-native-gesture-image/commit/68e6e43))
+
 ## <small>0.4.1 (2025-03-11)</small>
 
 * chore: upgrade react-native-gesture-handler and react-native-reanimated dependencies ([b0d6b16](https://github.com/VoDucDuoc/react-native-gesture-image/commit/b0d6b16))
