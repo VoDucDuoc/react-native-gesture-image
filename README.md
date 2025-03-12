@@ -8,17 +8,9 @@ IOS|ANDROID
 
 ## Prerequisites
 
-This library relies on the following dependencies to enable gesture and animation support:
+This library relies on the following dependencies to enable gesture and animation support (you need to setup these library below)
 - **[react-native-gesture-handler](https://docs.swmansion.com/react-native-gesture-handler/docs/)**: Handles advanced touch gestures like pinch and pan.
 - **[react-native-reanimated](https://docs.swmansion.com/react-native-reanimated/)**: Provides smooth animations for zooming and panning.
-
-Install these prerequisites along with the library:
-
-```sh
-npm install react-native-gesture-handler react-native-reanimated
-# or
-yarn add react-native-gesture-handler react-native-reanimated
-```
 
 ## Installation
 ```sh
@@ -28,22 +20,6 @@ yarn add @duocvo/react-native-gesture-image
 ```
 
 ## Usage
-
-First, wrap your app with `GestureHandlerRootView` component:
-
-```js
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
-
-export default function App() {
-  return (
-    <GestureHandlerRootView>
-      <ActualApp />
-    </GestureHandlerRootView>
-  );
-}
-```
-
-Then, use the components provided by the library:
 
 ```js
 import Gallery from '@duocvo/react-native-gesture-image';
@@ -56,15 +32,6 @@ const images = [
 ];
 
 <Gallery data={images} />
-```
-**Note:** Gallery is built on top of FlatList for rendering multiple images efficiently. If you don’t want to use FlatList and prefer a single image viewer, use ImageViewer instead. See the example below:
-```js
-import { ImageViewer } from '@duocvo/react-native-gesture-image';
-
-// Example usage of ImageViewer
-const imageSource = { uri: 'https://example.com/image.jpg' };
-
-<ImageViewer source={imageSource} />
 ```
 
 ## Props
@@ -79,15 +46,6 @@ const imageSource = { uri: 'https://example.com/image.jpg' };
 | `containerStyle`      | `object` |         | Custom style for the gallery container           | No       |
 | `contentContainerStyle` | `object` |       | Custom style for the content container           | No       |
 | `backdropColor`       | `string` | `black` | Background color of the gallery                  | No       |
-
-
-### ImageViewer
-
-| Prop              | Type     | Default | Description                                      | Required |
-|-------------------|----------|---------|--------------------------------------------------|----------|
-| `source`          | `object` |         | Source for the image                             | Yes      |
-| `imageStyle`      | `object` |         | Custom style for the image                       | No       |
-
 
 ## Contributing
 
