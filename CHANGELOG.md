@@ -1,5 +1,10 @@
 # Changelog
 
+## <small>1.0.1 (2025-03-12)</small>
+
+* chore: bump package version to 1.0.0 and update README example ([c859694](https://github.com/VoDucDuoc/react-native-gesture-image/commit/c859694))
+* chore: set package version and simplify README ([2bcd15e](https://github.com/VoDucDuoc/react-native-gesture-image/commit/2bcd15e))
+
 ## <small>0.4.2 (2025-03-12)</small>
 
 * chore: downgrade react-native-gesture-handler and react-native-reanimated ([68e6e43](https://github.com/VoDucDuoc/react-native-gesture-image/commit/68e6e43))
