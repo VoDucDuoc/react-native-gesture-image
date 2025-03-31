@@ -2,9 +2,10 @@
 
 This library provides a highly customizable and performant image viewer component for React Native applications. It supports advanced gestures such as pinch-to-zoom, panning, and double-tap to zoom in and out, making it ideal for creating rich, interactive image viewing experiences. Built with **[react-native-gesture-handler](https://docs.swmansion.com/react-native-gesture-handler/docs/)** for handling advanced touch gestures like pinch and pan, and **[react-native-reanimated](https://docs.swmansion.com/react-native-reanimated/)** for providing smooth animations for zooming and panning.
 
-IOS|ANDROID
---|--
-<video src="https://github.com/user-attachments/assets/6cdb7f6e-a059-4ed1-ac75-3f0a74c75052">|<video src="https://github.com/user-attachments/assets/9fe9313f-2ed2-4aef-8c4d-408a812a6a9f">
+<p float="left">
+	<img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZnExcmoxOW01OHNsNmtlbHEyenVrajFnc3lkd3NkcWE0dHJ3YnpicyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ERncfdZFYnH3eTU8oT/giphy.gif" width="300" height="650">
+  <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExY2E0bTFmdm9xdmFpMng4ejA3anRkbHo5Y2RiNXUzdnpjNzd4dzdjayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/5IHo2kmBWW53TXVpDY/giphy.gif" width="300" height="650">
+</p>
 
 ## Prerequisites
 
