@@ -22,19 +22,39 @@ yarn add @duocvo/react-native-gesture-image
 
 ## Usage
 
-```js
+```jsx
+import React, { useRef } from 'react';
+import { View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import Gallery from '@duocvo/react-native-gesture-image';
 
-// Example usage of Gallery
 export default function App() {
+  const galleryRef = useRef(null);
+  
   const images = [
     { uri: 'https://picsum.photos/200/300' },
     { uri: 'https://picsum.photos/200/300' },
     { uri: 'https://picsum.photos/200/300' },
-  ]
+  ];
+  
   return (
     <View style={styles.container}>
-      <Gallery data={images} />
+      {/* Thumbnail images that open the gallery when tapped */}
+      <View style={styles.thumbnails}>
+        {images.map((image, index) => (
+          <TouchableOpacity 
+            key={index} 
+            onPress={() => galleryRef.current?.show(index)}
+          >
+            <Image source={image} style={styles.thumbnail} />
+          </TouchableOpacity>
+        ))}
+      </View>
+      
+      {/* Gallery component */}
+      <Gallery 
+        ref={galleryRef}
+        data={images} 
+      />
     </View>
   );
 }
@@ -42,6 +62,16 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  thumbnails: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    padding: 10,
+  },
+  thumbnail: {
+    width: 100,
+    height: 100,
+    margin: 5,
   },
 });
 ```
@@ -58,6 +88,103 @@ const styles = StyleSheet.create({
 | `containerStyle`      | `object` |         | Custom style for the gallery container           | No       |
 | `contentContainerStyle` | `object` |       | Custom style for the content container           | No       |
 | `backdropColor`       | `string` | `black` | Background color of the gallery                  | No       |
+| `initialIndex`        | `number` | `0`     | Initial index of the image to display            | No       |
+| `enablePanDownToClose`| `boolean`| `false` | Enable closing the gallery by panning down       | No       |
+| `renderHeader`        | `function`|        | Custom header component                          | No       |
+| `renderFooter`        | `function`|        | Custom footer component                          | No       |
+
+### Gallery Ref Methods
+
+| Method                | Parameters | Description                                      |
+|-----------------------|------------|--------------------------------------------------|
+| `show`                | `index?: number` | Show the gallery, optionally at a specific index |
+| `hide`                | -          | Hide the gallery                                 |
+
+## Examples
+
+### Basic Usage with Header and Footer
+
+```jsx
+import React, { useRef } from 'react';
+import { View, StyleSheet, TouchableOpacity, Image, Text } from 'react-native';
+import Gallery from '@duocvo/react-native-gesture-image';
+
+export default function App() {
+  const galleryRef = useRef(null);
+  
+  const images = [
+    { uri: 'https://picsum.photos/200/300' },
+    { uri: 'https://picsum.photos/200/300' },
+    { uri: 'https://picsum.photos/200/300' },
+  ];
+  
+  return (
+    <View style={styles.container}>
+      {/* Thumbnail images that open the gallery when tapped */}
+      <View style={styles.thumbnails}>
+        {images.map((image, index) => (
+          <TouchableOpacity 
+            key={index} 
+            onPress={() => galleryRef.current?.show(index)}
+          >
+            <Image source={image} style={styles.thumbnail} />
+          </TouchableOpacity>
+        ))}
+      </View>
+      
+      {/* Gallery component with custom header and footer */}
+      <Gallery 
+        ref={galleryRef}
+        data={images}
+        renderHeader={() => (
+          <View style={styles.header}>
+            <TouchableOpacity onPress={() => galleryRef.current?.hide()}>
+              <Text style={styles.headerText}>Close</Text>
+            </TouchableOpacity>
+          </View>
+        )}
+        renderFooter={() => (
+          <View style={styles.footer}>
+            <Text style={styles.footerText}>Image Caption</Text>
+          </View>
+        )}
+      />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  thumbnails: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    padding: 10,
+  },
+  thumbnail: {
+    width: 100,
+    height: 100,
+    margin: 5,
+  },
+  header: {
+    padding: 16,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  headerText: {
+    color: 'white',
+    fontSize: 16,
+  },
+  footer: {
+    padding: 16,
+  },
+  footerText: {
+    color: 'white',
+    fontSize: 14,
+  },
+});
+```
 
 ## Contributing
 
