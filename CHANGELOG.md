@@ -1,5 +1,9 @@
 # Changelog
 
+## <small>1.1.1 (2025-04-20)</small>
+
+* chore: update ts config ([853cfd0](https://github.com/VoDucDuoc/react-native-gesture-image/commit/853cfd0))
+
 ## 1.1.0 (2025-04-20)
 
 * chore: remove console.log ([baa51af](https://github.com/VoDucDuoc/react-native-gesture-image/commit/baa51af))
