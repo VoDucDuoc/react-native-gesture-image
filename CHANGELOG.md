@@ -1,5 +1,9 @@
 # Changelog
 
+## <small>1.1.3 (2025-04-20)</small>
+
+* chore: update component name ([7e06642](https://github.com/VoDucDuoc/react-native-gesture-image/commit/7e06642))
+
 ## <small>1.1.2 (2025-04-20)</small>
 
 * chore: update import path for Gallery component and enhance type definitions ([88bce23](https://github.com/VoDucDuoc/react-native-gesture-image/commit/88bce23))
