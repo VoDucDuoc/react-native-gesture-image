@@ -27,7 +27,8 @@
     "target": "ESNext",
     "verbatimModuleSyntax": true,
     "declaration": true,
-    "declarationDir": "./lib/typescript"
+    "declarationDir": "./lib/typescript",
+    "declarationMap": true
   },
   "include": ["src"],
   "exclude": ["example", "lib", "node_modules"]
