@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.0 (2025-04-20)
+
+* chore: remove console.log ([baa51af](https://github.com/VoDucDuoc/react-native-gesture-image/commit/baa51af))
+* chore: update version and add header/footer ([4d6614f](https://github.com/VoDucDuoc/react-native-gesture-image/commit/4d6614f))
+* feat(gallery): enhance gallery and image viewer components ([f9bf5fe](https://github.com/VoDucDuoc/react-native-gesture-image/commit/f9bf5fe))
+
 ## <small>1.0.3 (2025-03-31)</small>
 
 * Update README.md ([4bdfb48](https://github.com/VoDucDuoc/react-native-gesture-image/commit/4bdfb48))
