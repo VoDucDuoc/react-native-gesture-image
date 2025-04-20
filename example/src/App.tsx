@@ -7,7 +7,7 @@ import {
   View,
 } from 'react-native';
 import React, { useRef } from 'react';
-import Gallery, { GalleryRef } from '@duocvo/react-native-gesture-image';
+import Gallery, { GalleryRef } from '../../src/index';
 
 const image1 = require('../assets/image1.jpeg');
 const image2 = require('../assets/image2.jpeg');

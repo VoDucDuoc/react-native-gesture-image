@@ -1,13 +1,25 @@
-import type { GalleryRef, GalleryProps, ImageViewerProps } from './Type';
-import type { ComponentType } from 'react';
-
-export type { GalleryRef, GalleryProps, ImageViewerProps };
-
+import type {
+  GalleryRef as GalleryRefType,
+  GalleryProps as GalleryPropsType,
+  ImageViewerProps as ImageViewerPropsType,
+} from './Type';
+import type {
+  ComponentType,
+  ForwardRefExoticComponent,
+  RefAttributes,
+} from 'react';
 import GalleryImpl from './Gallery';
 import ImageViewerImpl from './ImageViewer';
 
-const GalleryComponent: ComponentType<GalleryProps> = GalleryImpl;
-const ImageViewerComponent: ComponentType<ImageViewerProps> = ImageViewerImpl;
+const GalleryComponent: ForwardRefExoticComponent<
+  GalleryPropsType & RefAttributes<GalleryRefType>
+> = GalleryImpl;
+const ImageViewerComponent: ComponentType<ImageViewerPropsType> =
+  ImageViewerImpl;
+
+export type GalleryRef = GalleryRefType;
+export type GalleryProps = GalleryPropsType;
+export type ImageViewerProps = ImageViewerPropsType;
 
 export { ImageViewerComponent as ImageViewer };
 export default GalleryComponent;
