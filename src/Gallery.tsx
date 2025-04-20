@@ -60,7 +60,6 @@ const Gallery = forwardRef<GalleryRef, GalleryProps>(
       (index: number = 0) => {
         translateY.value = withTiming(0, { duration: 200 });
         setIsVisible(true);
-        console.log('show', index);
         if (flatListRef.current && index >= 0) {
           flatListRef.current.scrollToIndex({
             index,
