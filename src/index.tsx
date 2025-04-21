@@ -6,6 +6,7 @@ import type {
 } from 'react';
 import GalleryComponent from './Gallery';
 import ImageViewerComponent from './ImageViewer';
+import 'react-native-gesture-handler';
 
 const Gallery: ForwardRefExoticComponent<
   GalleryProps & RefAttributes<GalleryRef>
