@@ -6,8 +6,8 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, { useRef } from 'react';
-import Gallery, { GalleryRef } from '../../src';
+import { useRef } from 'react';
+import Gallery, { type GalleryRef } from '../../src';
 
 export default function App() {
   const galleryRef = useRef<GalleryRef>(null);
