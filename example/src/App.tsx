@@ -9,13 +9,13 @@ import {
 import React, { useRef } from 'react';
 import Gallery, { GalleryRef } from '../../src';
 
-const image1 = require('../assets/image1.jpeg');
-const image2 = require('../assets/image2.jpeg');
-const image3 = require('../assets/image3.jpeg');
-
 export default function App() {
   const galleryRef = useRef<GalleryRef>(null);
-  const data = [image1, image2, image3];
+  const data = [
+    { uri: 'https://picsum.photos/200/300' },
+    { uri: 'https://picsum.photos/200/300' },
+    { uri: 'https://picsum.photos/200/300' },
+  ];
 
   return (
     <View style={styles.container}>
