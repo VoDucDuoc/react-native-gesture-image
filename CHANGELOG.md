@@ -1,5 +1,9 @@
 # Changelog
 
+## <small>1.1.5 (2025-04-21)</small>
+
+* chore: update dependencies and configuration ([30b4a77](https://github.com/VoDucDuoc/react-native-gesture-image/commit/30b4a77))
+
 ## <small>1.1.4 (2025-04-21)</small>
 
 * chore: refactor type imports and add types file ([217a0ea](https://github.com/VoDucDuoc/react-native-gesture-image/commit/217a0ea))
