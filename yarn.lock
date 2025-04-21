@@ -1867,8 +1867,8 @@ __metadata:
     react: 18.3.1
     react-native: 0.76.7
     react-native-builder-bob: ^0.37.0
-    react-native-gesture-handler: ^2.20.2
-    react-native-reanimated: ^3.16.1
+    react-native-gesture-handler: ^2.13.4
+    react-native-reanimated: ^3.6.1
     release-it: ^17.10.0
     typescript: ^5.2.2
   peerDependencies:
@@ -1985,11 +1985,11 @@ __metadata:
   linkType: hard
 
 "@evilmartians/lefthook@npm:^1.5.0":
-  version: 1.11.10
-  resolution: "@evilmartians/lefthook@npm:1.11.10"
+  version: 1.11.11
+  resolution: "@evilmartians/lefthook@npm:1.11.11"
   bin:
     lefthook: bin/index.js
-  checksum: 124c97c1007c880d567ae94d4e8b9d36469edccadceb1a5c1afdecafee884207c0f61f92f50bd3c4a11f5807944c315bbabbbeab2ea16bd20518e78dbe2f3977
+  checksum: 86f8380cd0be1792ccd930648ac88aea9d7d4340da56ac6fb56a3303d6ab6330534b8eb8bd3619a01792f0e46a837a939bad4c2e18fbb95374f3163c0298fab1
   conditions: (os=darwin | os=linux | os=win32) & (cpu=x64 | cpu=arm64 | cpu=ia32)
   languageName: node
   linkType: hard
@@ -11972,7 +11972,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-gesture-handler@npm:^2.20.2, react-native-gesture-handler@npm:^2.25.0":
+"react-native-gesture-handler@npm:^2.13.4, react-native-gesture-handler@npm:^2.25.0":
   version: 2.25.0
   resolution: "react-native-gesture-handler@npm:2.25.0"
   dependencies:
@@ -12014,7 +12014,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-reanimated@npm:^3.16.1, react-native-reanimated@npm:^3.17.4":
+"react-native-reanimated@npm:^3.17.4, react-native-reanimated@npm:^3.6.1":
   version: 3.17.4
   resolution: "react-native-reanimated@npm:3.17.4"
   dependencies:

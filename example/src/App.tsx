@@ -6,16 +6,23 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Gallery, { type GalleryRef } from '../../src';
 
 export default function App() {
   const galleryRef = useRef<GalleryRef>(null);
-  const data = [
-    { uri: 'https://picsum.photos/200/300' },
-    { uri: 'https://picsum.photos/200/300' },
-    { uri: 'https://picsum.photos/200/300' },
-  ];
+
+  const [data, setData] = useState<any>([]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setData([
+        { uri: 'https://picsum.photos/200/300' },
+        { uri: 'https://picsum.photos/200/300' },
+        { uri: 'https://picsum.photos/200/300' },
+      ]);
+    }, 1000);
+  }, []);
 
   return (
     <View style={styles.container}>

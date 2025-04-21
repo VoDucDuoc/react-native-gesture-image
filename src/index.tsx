@@ -24,6 +24,7 @@ import Animated, {
   runOnJS,
   useAnimatedStyle,
   useSharedValue,
+  withDelay,
   withTiming,
 } from 'react-native-reanimated';
 import type { GalleryProps, GalleryRef, ImageViewerProps } from './types';
@@ -59,13 +60,13 @@ const Gallery = forwardRef<GalleryRef, GalleryProps>(
     const layoutTranslateY = useSharedValue(0);
     const [isVisible, setIsVisible] = useState(false);
     useEffect(() => {
-      if (flatListRef.current && initialIndex >= 0) {
+      if (flatListRef.current && initialIndex >= 0 && data.length > 0) {
         flatListRef.current.scrollToIndex({
           index: initialIndex,
           animated: false,
         });
       }
-    }, [initialIndex]);
+    }, [initialIndex, data]);
     useImperativeHandle(ref, () => ({
       show,
       hide,
@@ -73,20 +74,26 @@ const Gallery = forwardRef<GalleryRef, GalleryProps>(
     }));
     const show = useCallback(
       (index: number = 0) => {
-        translateY.value = withTiming(0, { duration: 200 });
         setIsVisible(true);
-        if (flatListRef.current && index >= 0) {
-          flatListRef.current.scrollToIndex({
-            index,
-            animated: false,
-          });
-        }
+        const timer = setTimeout(() => {
+          if (flatListRef.current && index >= 0) {
+            flatListRef.current.scrollToIndex({
+              index,
+              animated: false,
+            });
+          }
+          clearTimeout(timer);
+        }, 200);
+        translateY.value = withDelay(200, withTiming(0, { duration: 200 }));
       },
       [translateY, flatListRef]
     );
     const hide = useCallback(() => {
       translateY.value = withTiming(SCREEN_HEIGHT, { duration: 200 });
-      setIsVisible(false);
+      const timer = setTimeout(() => {
+        setIsVisible(false);
+        clearTimeout(timer);
+      }, 200);
     }, [translateY]);
     const renderItem = useCallback(
       ({ item }: { item: ImageSourcePropType }) => (
@@ -112,14 +119,7 @@ const Gallery = forwardRef<GalleryRef, GalleryProps>(
         'clamp'
       ),
     }));
-    const hideLayoutAnimated = useAnimatedStyle(() => ({
-      opacity: interpolate(
-        layoutTranslateY.value,
-        [-VERTICAL_ACTIVATION_THRESHOLD, 0, VERTICAL_ACTIVATION_THRESHOLD],
-        [0, 1, 0]
-      ),
-    }));
-    const translateHeaderAnimated = useAnimatedStyle(() => ({
+    const hideHeaderAnimated = useAnimatedStyle(() => ({
       transform: [
         {
           translateY: interpolate(
@@ -134,8 +134,13 @@ const Gallery = forwardRef<GalleryRef, GalleryProps>(
           ),
         },
       ],
+      opacity: interpolate(
+        layoutTranslateY.value,
+        [-VERTICAL_ACTIVATION_THRESHOLD, 0, VERTICAL_ACTIVATION_THRESHOLD],
+        [0, 1, 0]
+      ),
     }));
-    const translateFooterAnimated = useAnimatedStyle(() => ({
+    const hideFooterAnimated = useAnimatedStyle(() => ({
       transform: [
         {
           translateY: interpolate(
@@ -150,6 +155,11 @@ const Gallery = forwardRef<GalleryRef, GalleryProps>(
           ),
         },
       ],
+      opacity: interpolate(
+        layoutTranslateY.value,
+        [-VERTICAL_ACTIVATION_THRESHOLD, 0, VERTICAL_ACTIVATION_THRESHOLD],
+        [0, 1, 0]
+      ),
     }));
     const getItemLayout = useCallback(
       (_: any, index: number) => ({
@@ -159,6 +169,11 @@ const Gallery = forwardRef<GalleryRef, GalleryProps>(
       }),
       []
     );
+
+    if (data.length === 0 || !isVisible) {
+      return null;
+    }
+
     return (
       <GestureHandlerRootView style={styles.gestureContainer}>
         <Animated.View
@@ -183,39 +198,18 @@ const Gallery = forwardRef<GalleryRef, GalleryProps>(
             maxToRenderPerBatch={2}
             windowSize={2}
             removeClippedSubviews={true}
-            onScrollToIndexFailed={(info) => {
-              console.warn('Scroll to index failed:', info);
-              setTimeout(() => {
-                flatListRef.current?.scrollToIndex({
-                  index: initialIndex,
-                  animated: false,
-                });
-              }, 100);
-            }}
             {...props}
             renderItem={renderItem}
             CellRendererComponent={undefined}
           />
           {renderHeader && (
-            <Animated.View
-              style={[
-                styles.headerContainer,
-                hideLayoutAnimated,
-                translateHeaderAnimated,
-              ]}
-            >
+            <Animated.View style={[styles.headerContainer, hideHeaderAnimated]}>
               {renderHeader()}
             </Animated.View>
           )}
         </Animated.View>
         {renderFooter && (
-          <Animated.View
-            style={[
-              styles.footerContainer,
-              hideLayoutAnimated,
-              translateFooterAnimated,
-            ]}
-          >
+          <Animated.View style={[styles.footerContainer, hideFooterAnimated]}>
             {renderFooter()}
           </Animated.View>
         )}
@@ -324,11 +318,15 @@ const ImageViewer = ({
   const pinch = useMemo(
     () =>
       Gesture.Pinch()
+        .enabled(!isLoading)
         .onStart((event) => {
           'worklet';
           focalX.value = event.focalX - SCREEN_WIDTH / 2;
           focalY.value = event.focalY - SCREEN_HEIGHT / 2;
-          layoutTranslateY.value = withTiming(10, _customDuration);
+          layoutTranslateY.value = withTiming(
+            VERTICAL_ACTIVATION_THRESHOLD,
+            _customDuration
+          );
         })
         .onUpdate((event) => {
           'worklet';
@@ -369,11 +367,13 @@ const ImageViewer = ({
       scale,
       translateX,
       translateY,
+      isLoading,
     ]
   );
   const pan = useMemo(
     () =>
       Gesture.Pan()
+        .enabled(activePan && !isLoading)
         .onStart(() => {
           'worklet';
           lastTranslateX.value = translateX.value;
@@ -417,8 +417,7 @@ const ImageViewer = ({
         .onEnd(() => {
           'worklet';
           snapToEdges();
-        })
-        .enabled(activePan),
+        }),
     [
       activePan,
       snapToEdges,
@@ -429,12 +428,13 @@ const ImageViewer = ({
       scale,
       translateX,
       translateY,
+      isLoading,
     ]
   );
   const panDown = useMemo(
     () =>
       Gesture.Pan()
-        .enabled(activePanDown && enablePanDownToClose)
+        .enabled(activePanDown && enablePanDownToClose && !isLoading)
         .activeOffsetY([
           -VERTICAL_ACTIVATION_THRESHOLD,
           VERTICAL_ACTIVATION_THRESHOLD,
@@ -443,7 +443,10 @@ const ImageViewer = ({
           'worklet';
           translateY.value = 0;
           translateX.value = 0;
-          layoutTranslateY.value = withTiming(10, _customDuration);
+          layoutTranslateY.value = withTiming(
+            VERTICAL_ACTIVATION_THRESHOLD,
+            _customDuration
+          );
         })
         .onUpdate((event) => {
           'worklet';
@@ -471,11 +474,13 @@ const ImageViewer = ({
       translateX,
       translateY,
       layoutTranslateY,
+      isLoading,
     ]
   );
   const doubleTap = useMemo(
     () =>
       Gesture.Tap()
+        .enabled(!isLoading)
         .numberOfTaps(2)
         .onStart((event) => {
           'worklet';
@@ -508,7 +513,10 @@ const ImageViewer = ({
               translateY.value = withTiming(newTranslateY, _customDuration);
             }
             scale.value = withTiming(newScale, _customDuration);
-            layoutTranslateY.value = withTiming(10, _customDuration);
+            layoutTranslateY.value = withTiming(
+              VERTICAL_ACTIVATION_THRESHOLD,
+              _customDuration
+            );
             lastTranslateY.value = newTranslateY;
             lastTranslateX.value = newTranslateX;
             runOnJS(onChangeScaleValue)(true);
@@ -525,6 +533,7 @@ const ImageViewer = ({
       scale,
       translateX,
       translateY,
+      isLoading,
     ]
   );
   const gesture = useMemo(
@@ -562,7 +571,7 @@ const ImageViewer = ({
         />
         {isLoading && (
           <View style={styles.loadingContainer}>
-            <ActivityIndicator size="small" color="#0000ff" />
+            <ActivityIndicator size="small" color="white" />
           </View>
         )}
       </Animated.View>
