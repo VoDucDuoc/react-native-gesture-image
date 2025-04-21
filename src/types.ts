@@ -2,7 +2,6 @@ import type {
   ImageStyle,
   ImageSourcePropType,
   ViewStyle,
-  FlatList,
   FlatListProps,
 } from 'react-native';
 import type { SharedValue } from 'react-native-reanimated';
@@ -60,20 +59,4 @@ export interface GalleryRef {
   hide: () => void;
   /** Whether the gallery is currently visible */
   isVisible: boolean;
-}
-
-/**
- * Internal control interface for the Gallery component
- */
-export interface GalleryControl {
-  /** Show the gallery at the specified index */
-  show: (index?: number) => void;
-  /** Hide the gallery */
-  hide: () => void;
-  /** Shared value indicating whether the gallery is visible */
-  isVisible: SharedValue<boolean>;
-  /** Shared value for translation on Y axis */
-  translateY: SharedValue<number>;
-  /** Reference to the FlatList component */
-  flatListRef: React.RefObject<FlatList>;
 }

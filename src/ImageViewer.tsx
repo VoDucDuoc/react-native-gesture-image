@@ -20,7 +20,7 @@ import {
   SCREEN_WIDTH,
   VERTICAL_ACTIVATION_THRESHOLD,
 } from './constants';
-import type { ImageViewerProps } from './Type';
+import type { ImageViewerProps } from './types';
 
 const ImageViewer = ({
   source,

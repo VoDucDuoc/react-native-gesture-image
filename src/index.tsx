@@ -1,8 +1,4 @@
-import type {
-  GalleryRef as GalleryRefType,
-  GalleryProps as GalleryPropsType,
-  ImageViewerProps as ImageViewerPropsType,
-} from './Type';
+import type { GalleryRef, GalleryProps, ImageViewerProps } from './types';
 import type {
   ComponentType,
   ForwardRefExoticComponent,
@@ -12,13 +8,10 @@ import GalleryComponent from './Gallery';
 import ImageViewerComponent from './ImageViewer';
 
 const Gallery: ForwardRefExoticComponent<
-  GalleryPropsType & RefAttributes<GalleryRefType>
+  GalleryProps & RefAttributes<GalleryRef>
 > = GalleryComponent;
-const ImageViewer: ComponentType<ImageViewerPropsType> = ImageViewerComponent;
+const ImageViewer: ComponentType<ImageViewerProps> = ImageViewerComponent;
 
-export type GalleryRef = GalleryRefType;
-export type GalleryProps = GalleryPropsType;
-export type ImageViewerProps = ImageViewerPropsType;
-
+export type { GalleryRef, GalleryProps };
 export { ImageViewer };
 export default Gallery;

@@ -19,7 +19,7 @@ import {
   SCREEN_HEIGHT,
   VERTICAL_ACTIVATION_THRESHOLD,
 } from './constants';
-import type { GalleryProps, GalleryRef } from './Type';
+import type { GalleryProps, GalleryRef } from './types';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 const Gallery = forwardRef<GalleryRef, GalleryProps>(
