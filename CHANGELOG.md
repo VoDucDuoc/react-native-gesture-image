@@ -1,5 +1,9 @@
 # Changelog
 
+## <small>1.1.6 (2025-04-21)</small>
+
+* chore: update package.json and add types for ImageViewer and Gallery components ([9cce4cb](https://github.com/VoDucDuoc/react-native-gesture-image/commit/9cce4cb))
+
 ## <small>1.1.5 (2025-04-21)</small>
 
 * chore: update dependencies and configuration ([30b4a77](https://github.com/VoDucDuoc/react-native-gesture-image/commit/30b4a77))
