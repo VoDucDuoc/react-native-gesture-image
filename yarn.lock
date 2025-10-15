@@ -1863,7 +1863,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@duocvo/react-native-gesture-image@*, @duocvo/react-native-gesture-image@workspace:.":
+"@duocvo/react-native-gesture-image@workspace:., @duocvo/react-native-gesture-image@workspace:^":
   version: 0.0.0-use.local
   resolution: "@duocvo/react-native-gesture-image@workspace:."
   dependencies:
@@ -1885,6 +1885,8 @@ __metadata:
     prettier: ^3.0.3
     react: 18.3.1
     react-native: 0.76.7
+    react-native-gesture-handler: 2.24.0
+    react-native-reanimated: 3.16.7
     release-it: ^17.10.0
     typescript: ^5.2.2
   peerDependencies:
@@ -11681,7 +11683,7 @@ __metadata:
   resolution: "react-native-gesture-image-example@workspace:example"
   dependencies:
     "@babel/core": ^7.20.0
-    "@duocvo/react-native-gesture-image": "*"
+    "@duocvo/react-native-gesture-image": "workspace:^"
     "@expo/metro-runtime": ~4.0.1
     expo: ~52.0.46
     expo-status-bar: ~2.0.1

@@ -9,7 +9,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
-    "@duocvo/react-native-gesture-image": "*",
+    "@duocvo/react-native-gesture-image": "workspace:^",
     "@expo/metro-runtime": "~4.0.1",
     "expo": "~52.0.46",
     "expo-status-bar": "~2.0.1",
