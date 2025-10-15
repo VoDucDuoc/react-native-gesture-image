@@ -27,7 +27,7 @@ import Animated, {
   withDelay,
   withTiming,
 } from 'react-native-reanimated';
-import type { GalleryProps, GalleryRef, ImageViewerProps } from './types';
+import type { GalleryProps, GalleryRef, ImageViewerProps } from '../types';
 import {
   Gesture,
   GestureDetector,
@@ -38,7 +38,7 @@ const dimensions = Dimensions.get('window');
 const SCREEN_WIDTH = dimensions.width;
 const SCREEN_HEIGHT = dimensions.height;
 const VERTICAL_ACTIVATION_THRESHOLD = 10;
-const Gallery = forwardRef<GalleryRef, GalleryProps>(
+export const Gallery = forwardRef<GalleryRef, GalleryProps>(
   (
     {
       data = [],
@@ -609,6 +609,3 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
   },
 });
-
-export type { GalleryRef, GalleryProps, ImageViewerProps };
-export default Gallery;

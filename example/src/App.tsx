@@ -7,7 +7,7 @@ import {
   View,
 } from 'react-native';
 import { useEffect, useRef, useState } from 'react';
-import Gallery, { type GalleryRef } from '../../src';
+import Gallery, { type GalleryRef } from '@duocvo/react-native-gesture-image';
 
 export default function App() {
   const galleryRef = useRef<GalleryRef>(null);

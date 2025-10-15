@@ -2,11 +2,11 @@
   "name": "@duocvo/react-native-gesture-image",
   "version": "1.1.8",
   "description": "This library provides a highly customizable and performant image viewer component for React Native applications. Itsupport advanced gestures such as pinch-to-zoom, panning, and double-tap to zoom in and out, making it ideal for creating rich, interactive image viewing experiences.",
-  "source": "./src/index.tsx",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
   "exports": {
     ".": {
+      "source": "./src/index.ts",
       "types": "./lib/typescript/src/index.d.ts",
       "default": "./lib/module/index.js"
     },
@@ -91,15 +91,14 @@
     "prettier": "^3.0.3",
     "react": "18.3.1",
     "react-native": "0.76.7",
-    "react-native-builder-bob": "^0.37.0",
-    "react-native-gesture-handler": "^2.13.4",
-    "react-native-reanimated": "^3.6.1",
     "release-it": "^17.10.0",
     "typescript": "^5.2.2"
   },
   "peerDependencies": {
     "react": "*",
-    "react-native": "*"
+    "react-native": "*",
+    "react-native-gesture-handler": ">=2.9 <3",
+    "react-native-reanimated": ">=3 <4"
   },
   "workspaces": [
     "example"
